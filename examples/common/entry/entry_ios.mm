@@ -83,6 +83,10 @@ namespace entry
 			}
 		}
 
+        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"resources" ofType:@"bundle"];
+        if (bundlePath != nil)
+            chdir([bundlePath UTF8String]);
+        
 		MainThreadEntry* self = (MainThreadEntry*)_userData;
 		int32_t result = main(self->m_argc, self->m_argv);
 		return result;
